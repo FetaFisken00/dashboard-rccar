@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      transitionDuration: {
+        0: "0ms",
+        2000: "2000ms",
+        5000: "5000ms",
+      }, 
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

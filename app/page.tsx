@@ -13,7 +13,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Car, Divide } from "lucide-react";
 import { DropdownMenu, DropdownMenuSeparator, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Moon, Monitor, Sun } from "lucide-react";
+import { Moon, Monitor, Sun, Loader, Loader2 } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Switch } from "@/components/ui/switch"
+import { Slider } from "@/components/ui/slider"
+import { CanvasComponent } from "@/components/canvasComponent"
 
 export default function Home() {
   const [progress, setProgress] = useState(0);
@@ -47,7 +51,7 @@ export default function Home() {
     if (lastMessage !== null) {
       // console.log(lastMessage.data);
       toast(lastMessage.data);
-      setMessages((prev: any) => [...prev, lastMessage.data] as any[]);
+      setMessages((prev: any[]) => [...prev, lastMessage.data]);
     }
 
     // Clean up interval on unmount
@@ -82,6 +86,16 @@ export default function Home() {
                   <h2 className="text-3xl font-bold tracking-light font-sans">
                     Dashboard
                   </h2>
+                  <div>
+                    <Button variant="ghost">Simple</Button>
+                    <Button variant="ghost">Useful</Button>
+                    {/* <Button disabled>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin duration-1500"/>
+                      work in progress
+                    </Button> */}
+
+
+                  </div>
                   <div className="flex flex-row gap-6">
                     <div className="flex items-center justify-end space-x-4">
                       <div className="flex justify-items-end grid gap-y-2">
@@ -114,34 +128,40 @@ export default function Home() {
 
                 </div>
                 <Separator />
-                {/* <Mockup2></Mockup2> */}
-                <div className="grid grid-cols-5 col-auto gap-4 p-4">
+                <div className="flex col-auto gap-4 p-4">
                   <Card className="h-64">
-                    helo
+                    <div className="w-96 grid grid-row-5 col-auto gap-4 p-4 px-2">
+                      <div className="flex px-4 justify-between">
+                        <p>mode 1</p>
+                        <Switch disabled />
+                      </div>
+                      <Separator />
+                      <div className="flex px-4 justify-between">
+                        <p>mode 2</p>
+                        <Switch disabled />
+                      </div>
+                      <Separator />
+                      <div className="flex px-4 justify-between">
+                        <p>Tank mode</p>
+                        <Switch checked={true} disabled />
+                      </div>
+                      <Separator />
+                      <div className="flex flex-col px-4 space-y-2 justify-between">
+                        <p>Power limit</p>
+                        <Slider disabled />
+                      </div>
+                    </div>
                   </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
-                  </Card>
-                  <Card className="h-64">
-                    helo
+                  <Card className="h-96 w-96 flex items-center justify-center">
+                    {/* <h1>Acceleration</h1> */}
+                    <CanvasComponent />
+                    {/* <div className="w-48 h-48 rounded-full bg-white relative">
+                      <div className="absolute inset-y-0 left-1/2 w-0.5 bg-gray-300 translate-x-[-0.25px]" />
+                      <div className="absolute inset-x-0 top-1/2 h-0.5 bg-gray-300 translate-y-[-0.25px]" />
+                      <div className="w-[4px] h-[50px] bg-teal-400 bottom-1/2 left-1/2 absolute origin-bottom" style={{ transform: "rotate(150deg)" }}>
+                        <div className="w-[20px] h-[20px] rounded-full bg-teal-400 absolute top-[-10px] left-[-8px]"></div>
+                      </div>
+                    </div> */}
                   </Card>
                   <Card className="h-64">
                     helo
@@ -154,6 +174,7 @@ export default function Home() {
             {/* <UDPthing></UDPthing> */}
 
 
+            {/* <Mockup2></Mockup2> */}
             {/* <Dashboard></Dashboard> */}
             {/* <Component></Component> */}
           </>
